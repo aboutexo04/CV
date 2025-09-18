@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서연 | Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L60,112C120,128,240,160,360,160C480,160,600,128,720,122.7C840,117,960,139,1080,138.7C1200,139,1320,117,1380,106.7L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .name {
+            font-size: 80px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-size: 32px;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+        
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+        
+        .intro-text {
+            font-size: 22px;
+            line-height: 1.8;
+            color: #555;
+            padding: 30px;
+            background: #f8f9fa;
+            border-left: 4px solid #1e3c72;
+            border-radius: 8px;
+        }
+        
+        .experience-card {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 30px;
+            padding: 30px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .experience-card:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-date {
+            font-weight: 600;
+            color: #1e3c72;
+            font-size: 22px;
+        }
+        
+        .experience-content h3 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .experience-content .company {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .experience-content .description {
+            font-size: 20px;
+            color: #777;
+            line-height: 1.6;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #1e3c72;
+        }
+        
+        .skill-category h4 {
+            font-size: 22px;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            font-size: 20px;
+            color: #666;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #1e3c72;
+        }
+        
+        .education-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: #1e3c72;
+        }
+        
+        .education-item {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
+            background: #1e3c72;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #1e3c72;
+        }
+        
+        .education-item h3 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .education-item .school {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .education-item .period {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 40px 0;
+            text-align: center;
+            color: #666;
+            margin-top: 60px;
+        }
+        
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 10px 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .name {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .experience-card {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+        /* 포트폴리오 링크용 achievement-badge 스타일 변형 */
+.section:last-of-type .achievement-badge,
+.portfolio-badge {
+    display: inline-block;
+    padding: 12px 28px;
+    margin: 5px;
+    background: linear-gradient(135deg, #f85032 0%, #e73827 100%);
+    color: white;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(248, 80, 50, 0.3);
+}
+
+.section:last-of-type .achievement-badge:hover,
+.portfolio-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(248, 80, 50, 0.4);
+    background: linear-gradient(135deg,#ff6b54 0%, #ff8a7b 100%);
+}
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="name">문서연</h1>
+            <p class="tagline">ML Engineer | Data Analyst | IT Education Specialist</p>
+            <div class="contact-bar">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>aboutexo04@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>010-2128-7434</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>서울시 강남구</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">👋</div>
+                <h2 class="section-title">소개</h2>
+            </div>
+            <p class="intro-text">
+                IT 포렌식 분야에서 시작하여 재무 컨설팅, 디지털튜터, 코딩 강사를 거쳐 현재는 데이터 분석 및 머신러닝 역량 개발에 열정을 쏟고 있습니다. 
+                해외 거주 경험과 다양한 산업 경험을 바탕으로, 큰 그림을 그리고 기획하는 것을 좋아합니다. 최근에는 머신러닝 대회에서 우수한 성과를 달성하며 
+                데이터 분석 역량도 지속적으로 개발하고 있습니다. 
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">💼</div>
+                <h2 class="section-title">경력사항</h2>
+            </div>
+            <div class="experience-card">
+                <div class="experience-date">2024 - 2025</div>
+                <div class="experience-content">
+                    <h3>디지털튜터(디벗 튜터)</h3>
+                    <p class="company">서울시 소재 중학교, 고등학교</p>
+                    <p class="description">디지털튜터(디벗 튜터) 업무 수행(아이패드, 갤럭시패드 등 디지털 기기 배부, 관리 및 교육)</p>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="experience-date">2024 - 2025</div>
+                <div class="experience-content">
+                    <h3>아동, 초등 영어코딩 강사</h3>
+                    <p class="company">국제학교 부속 유치원, 초등학교</p>
+                    <p class="description">아동, 초등 학생 대상 영어 코딩 교육 프로그램 개발 및 영어강의 진행</p>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="experience-date">2014 - 2019</div>
+                <div class="experience-content">
+                    <h3>고객서비스 매니저</h3>
+                    <p class="company">(주)에프알엘코리아</p>
+                    <p class="description">글로벌 패션 브랜드 고객 경험 관리 및 서비스 품질 향상</p>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="experience-date">2011 - 2014</div>
+                <div class="experience-content">
+                    <h3>포렌식 전문가</h3>
+                    <p class="company">(주)레드아이포렌식스</p>
+                    <p class="description">디지털 포렌식 현장 조사 및 데이터 분석 업무 수행</p>
+                </div>
+            </div>
+            <div class="experience-card">
+                <div class="experience-date">2007 - 2010</div>
+                <div class="experience-content">
+                    <h3>재무자문 컨설턴트</h3>
+                    <p class="company">딜로이트안진회계법인</p>
+                    <p class="description">Financial Advisory Services 부문 M&A 자문 및 기업가치평가</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🎓</div>
+                <h2 class="section-title">학력</h2>
+            </div>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>Master of Science - Accounting & Finance</h3>
+                    <p class="school">London School of Economics and Political Science, UK</p>
+                    <p class="period">2005 - 2006</p>
+                </div>
+                <div class="education-item">
+                    <h3>Bachelor of Commerce - Accounting</h3>
+                    <p class="school">Macquarie University, Australia</p>
+                    <p class="period">2002 - 2006</p>
+                </div>
+                <div class="education-item">
+                    <h3>프랑스어과</h3>
+                    <p class="school">한영외국어고등학교</p>
+                    <p class="period">1997 - 2000</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🚀</div>
+                <h2 class="section-title">역량 및 기술</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>데이터 분석</h4>
+                    <ul class="skill-list">
+                        <li>머신러닝</li>
+                        <li>데이터 전처리</li>
+                        <li>예측 모델링</li>
+                        <li>Python 프로그래밍</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>비즈니스 스킬</h4>
+                    <ul class="skill-list">
+                        <li>재무 분석</li>
+                        <li>고객 서비스 관리</li>
+                        <li>프로젝트 관리</li>
+                        <li>포렌식 조사</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>교육 및 강의</h4>
+                    <ul class="skill-list">
+                        <li>아동 코딩 교육</li>
+                        <li>커리큘럼 개발</li>
+                        <li>영어 강의</li>
+                        <li>시니어 IT 교육</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>언어 능력</h4>
+                    <ul class="skill-list">
+                        <li>영어 (상급)</li>
+                        <li>일본어 (중급)</li>
+                        <li>중국어 (중급)</li>
+                        <li>한국어 (원어민)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">🏆</div>
+                <h2 class="section-title">교육이수 및 수상</h2>
+            </div>
+            <div style="padding: 20px 0;">
+                <span class="achievement-badge">SW 강사양성과정 수료</span>
+                <span class="achievement-badge">서오플 시니어IT강사 양성과정 수료</span>
+                <span class="achievement-badge">머신러닝 대회 팀 1위 달성</span>
+                <span class="achievement-badge">AI 부트캠프</span>
+
+            </div>
+        </section>
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">👨‍💻</div>
+                <h2 class="section-title">포트폴리오 링크</h2>
+            </div>
+            <div style="padding: 20px 0;">
+                <a href="#" class="achievement-badge">AI 부트캠프 ML대회 팀 1위</a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 문서연. All rights reserved.</p>
+    </footer>
+</body>
+</html>
