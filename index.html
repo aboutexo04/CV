@@ -292,6 +292,14 @@
                 align-items: center;
                 gap: 15px;
             }
+
+            .portfolio-group h3 {
+                font-size: 24px;
+            }
+
+            .project-body h4 {
+                font-size: 20px;
+            }
         }
         /* 포트폴리오 링크용 achievement-badge 스타일 변형 */
 .section:last-of-type .achievement-badge,
@@ -315,6 +323,123 @@
     box-shadow: 0 6px 20px rgba(248, 80, 50, 0.4);
     background: linear-gradient(135deg,#ff6b54 0%, #ff8a7b 100%);
 }
+
+        .portfolio-group + .portfolio-group {
+            margin-top: 42px;
+        }
+
+        #portfolio .section-title {
+            word-break: keep-all;
+        }
+
+        .portfolio-group h3 {
+            font-size: 28px;
+            color: #1e3c72;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #1e3c72;
+        }
+
+        .project-shot,
+        .project-fallback {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #f4f6fb;
+        }
+
+        .project-shot {
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .project-shot.shot-top {
+            object-position: top center;
+        }
+
+        .project-shot.shot-left {
+            object-position: left top;
+        }
+
+        .project-shot.shot-store {
+            aspect-ratio: 2 / 1;
+            object-position: center;
+        }
+
+        .project-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+            font-size: 40px;
+        }
+
+        .project-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .project-body h4 {
+            font-size: 22px;
+            color: #1e3c72;
+            font-weight: 700;
+        }
+
+        .project-body p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-links a {
+            display: inline-block;
+            text-decoration: none;
+            color: #1e3c72;
+            border: 1px solid #1e3c72;
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .project-links a:hover {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #fff;
+        }
         
     </style>
 </head>
@@ -482,19 +607,175 @@
 
             </div>
         </section>
-        <section class="section">
+        <section class="section" id="portfolio">
             <div class="section-header">
                 <div class="section-icon">👨‍💻</div>
                 <h2 class="section-title">포트폴리오 링크</h2>
             </div>
-            <div style="padding: 20px 0;">
-                <a href="https://aboutexo04.github.io/portfolio/" class="achievement-badge">AI 부트캠프 ML대회 팀 1위</a>
+            <div class="portfolio-group">
+                <h3>출시 앱</h3>
+                <div class="portfolio-grid">
+                    <article class="project-card">
+                        <img class="project-shot shot-store" src="images/heartsky.jpg" alt="HeartSky 앱 화면" width="1200" height="347">
+                        <div class="project-body">
+                            <h4>HeartSky</h4>
+                            <p>관심 도시 최대 5곳의 현지 시간, 낮과 밤, 날씨를 카드로 확인하는 앱입니다.</p>
+                            <div class="project-links">
+                                <a href="https://apps.apple.com/kr/app/heartsky/id6758879373" target="_blank" rel="noopener noreferrer">App Store</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.heartsky" target="_blank" rel="noopener noreferrer">Google Play</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-store" src="images/touchtalk.jpg" alt="TouchTalk 앱 화면" width="1200" height="347">
+                        <div class="project-body">
+                            <h4>TouchTalk</h4>
+                            <p>여행 상황별 문장을 누르면 14개 언어로 오프라인 음성을 들려주는 앱입니다.</p>
+                            <div class="project-links">
+                                <a href="https://apps.apple.com/kr/app/touchtalk/id6758562719" target="_blank" rel="noopener noreferrer">App Store</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.touchtalk.app" target="_blank" rel="noopener noreferrer">Google Play</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-store" src="images/travelglobe.jpg" alt="TravelGlobe 앱 화면" width="1200" height="347">
+                        <div class="project-body">
+                            <h4>TravelGlobe</h4>
+                            <p>3D 지구본에서 여행 계획, AI 일기, 경비를 함께 기록하는 앱입니다.</p>
+                            <div class="project-links">
+                                <a href="https://apps.apple.com/kr/app/travelglobe/id6758487704" target="_blank" rel="noopener noreferrer">App Store</a>
+                                <a href="https://play.google.com/store/apps/details?id=com.travelglobe.android" target="_blank" rel="noopener noreferrer">Google Play</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="portfolio-group">
+                <h3>AI</h3>
+                <div class="portfolio-grid">
+                    <article class="project-card">
+                        <div class="project-fallback" aria-hidden="true">⚖️</div>
+                        <div class="project-body">
+                            <h4>Justi-Q</h4>
+                            <p>형사 판례와 법령을 ChromaDB와 LangChain으로 찾아 답하는 법률 RAG입니다.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/aboutexo04/Justi-Q" target="_blank" rel="noopener noreferrer">저장소</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-top" src="images/dual-lang-ai.jpg" alt="한-중-일 동시 마스터 데모 화면" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>한-중-일 동시 마스터</h4>
+                            <p>한국어 문장을 중국어·일본어로 옮기고 한자 표기와 문법 차이를 비교하는 AI 튜터입니다.</p>
+                            <div class="project-links">
+                                <a href="https://dual-lang-ai-maxone.streamlit.app/" target="_blank" rel="noopener noreferrer">데모</a>
+                                <a href="https://github.com/aboutexo04/dual-lang-ai" target="_blank" rel="noopener noreferrer">저장소</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-left" src="images/trippy-ai.jpg" alt="TrippyAI 앱 화면" width="1200" height="706">
+                        <div class="project-body">
+                            <h4>TrippyAI</h4>
+                            <p>영수증과 사진 정보로 여행 지출과 일기를 자동으로 정리하는 AI 앱입니다.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/aboutexo04/trippy-ai-app" target="_blank" rel="noopener noreferrer">저장소</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="portfolio-group">
+                <h3>건물 관리</h3>
+                <div class="portfolio-grid">
+                    <article class="project-card">
+                        <img class="project-shot" src="images/rent-management.jpg" alt="임대차 기록 관리 로그인 화면" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>임대차 기록·기한 관리</h4>
+                            <p>상가 임대차의 계약, 연체, 기한을 한곳에서 기록하는 도구입니다.</p>
+                            <div class="project-links">
+                                <a href="https://rent-management-rho.vercel.app" target="_blank" rel="noopener noreferrer">데모</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot" src="images/building-log.jpg" alt="건물 관리일지 로그인 화면" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>건물 관리일지</h4>
+                            <p>출퇴근, 순찰, 임차인 연락을 두 계정이 나누어 적는 일지입니다.</p>
+                            <div class="project-links">
+                                <a href="https://building-log.vercel.app" target="_blank" rel="noopener noreferrer">데모</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-top" src="images/listing-message.jpg" alt="매물문자 데모 화면" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>매물문자</h4>
+                            <p>통화 후 매물 메모를 손님에게 보낼 문자 초안으로 정리하는 도구입니다.</p>
+                            <div class="project-links">
+                                <a href="https://listing-message.vercel.app" target="_blank" rel="noopener noreferrer">데모</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-top" src="images/property-brief-studio.jpg" alt="매각 브리핑 스튜디오 데모 화면" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>매각 브리핑 스튜디오</h4>
+                            <p>비교 사례로 매각가 근거와 브리핑 초안을 만드는 도구입니다.</p>
+                            <div class="project-links">
+                                <a href="https://property-brief-studio.vercel.app" target="_blank" rel="noopener noreferrer">데모</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="portfolio-group">
+                <h3>대회</h3>
+                <div class="portfolio-grid">
+                    <article class="project-card">
+                        <img class="project-shot shot-top" src="images/ml-bootcamp.jpg" alt="아파트 실거래가 예측 대회 포트폴리오" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>AI 부트캠프 ML대회 팀 1위</h4>
+                            <p>서울 아파트 실거래가 예측 대회에서 팀 1위를 기록한 과정입니다.</p>
+                            <div class="project-links">
+                                <a href="https://aboutexo04.github.io/portfolio/" target="_blank" rel="noopener noreferrer">데모</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-top" src="images/ml-portfolio.jpg" alt="아파트 실거래가 예측 실험 대시보드" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>실거래가 예측 실험 대시보드</h4>
+                            <p>아파트 실거래가 예측 실험의 RMSE와 제출 이력을 비교하는 대시보드입니다.</p>
+                            <div class="project-links">
+                                <a href="https://ml-portfolio-flax.vercel.app" target="_blank" rel="noopener noreferrer">데모</a>
+                                <a href="https://github.com/aboutexo04/ML_portfolio" target="_blank" rel="noopener noreferrer">저장소</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-shot shot-top" src="images/image-classification.jpg" alt="문서 유형 분류 대회 대시보드" width="1200" height="844">
+                        <div class="project-body">
+                            <h4>문서 유형 분류</h4>
+                            <p>문서 이미지 분류 대회에서 ViT 앙상블까지 점수 변화를 정리한 대시보드입니다.</p>
+                            <div class="project-links">
+                                <a href="https://image-classification-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">데모</a>
+                                <a href="https://github.com/aboutexo04/Image_classification_portfolio" target="_blank" rel="noopener noreferrer">저장소</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
     </div>
 
     <footer class="footer">
-        <p>© 2024 문서연. All rights reserved.</p>
+        <p>© 2026 문서연. All rights reserved.</p>
     </footer>
 </body>
 </html>
