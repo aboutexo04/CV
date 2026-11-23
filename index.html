@@ -341,7 +341,9 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 320px));
+            justify-content: start;
+            align-items: stretch;
             gap: 24px;
         }
 
@@ -352,7 +354,11 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            width: 100%;
+            max-width: 320px;
             min-width: 0;
+            min-height: 480px;
+            height: 100%;
             transition: all 0.3s ease;
         }
 
@@ -365,6 +371,7 @@
         .project-shot,
         .project-fallback {
             width: 100%;
+            height: auto;
             aspect-ratio: 16 / 10;
             background: #f4f6fb;
         }
@@ -381,11 +388,6 @@
 
         .project-shot.shot-left {
             object-position: left top;
-        }
-
-        .project-shot.shot-store {
-            aspect-ratio: 2 / 1;
-            object-position: center;
         }
 
         .project-fallback {
